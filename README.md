@@ -61,8 +61,8 @@ Update the code to only accept PNG images. If the request body is not a PNG imag
 
 ### Task 4
 
-Add a request query parameter called `bucketName` and using either AWS/GCP/Azure SDK, write code to upload the photo to the storage
-bucket.
+Add a request query parameter called `bucketName` and using either AWS/GCP/Azure SDK, write code capable of uploading
+the photo to the storage bucket.
 
 *Note:* we do not expect you to actually upload the images to a cloud platform. Consider a local solution where possible, for example
 [MinIO](https://min.io/product/s3-compatibility) is an S3-compatible storage solution that can be run locally. If you do run such a
@@ -79,7 +79,7 @@ Optional task, come back to after build/deploy steps if you have time.
 Images may come in rotated, see for example `rotated.png`. Implement code to check if the input image is correctly oriented
 and, if not, rotate the image to its default orientation.
 
-### Task 7 (optional)
+### Task 7 (optional)
 
 Optional task, come back to after build/deploy steps if you have time.
 
@@ -163,7 +163,7 @@ By default, Docker containers run using the root user. This is explicit in the i
 Now that we have our minimal image ready to publish, update the `.github/workflows/publish.yaml` workflow to build and publish the image within the confines of
 a Github Actions runner machine, upon merge of a pull request.
 
-*Note:* you don't have to actually publish the image.
+*Note:* you don't have to actually publish the image to an image repository.
 
 ### Task 5 (Optional)
 
