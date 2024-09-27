@@ -1,9 +1,18 @@
 # interview.devops
 
-At Popsa we upload a lot of photos. The base code in here defines a very simple Go HTTP server.
-For the remainder of the coding steps, you can adapt the base code to a language of your choosing but it is encouraged to use Go.
-Note that the build and deploy steps will continue to use Go. These steps will not depend on the code changes, so you will be
-able to do them regardless of your server code.
+## Introduction
+
+The assessment is broken down into three sections: [Coding](#coding), [Build](#build), and [Deploy](#deploy). We expect each section to take roughly 40 minutes, for a combined
+total of 2 hours. The Coding and Build sections have optional tasks. You can do these as you go if you have time, but consider the tasks ahead and their timing before doing so.
+
+At Popsa we upload a lot of photos. The base code in here defines a very simple Go HTTP server. For the Coding steps, you can adapt the base code to a language of your choosing
+but it is encouraged to use Go. Note that the build and deploy steps will continue to use Go, but do not require deep understanding of Go itself. These steps will not depend on the code changes,
+so you will be able to do them regardless of your server code.
+
+The next time we meet, we'll run through your solution together. If there are any parts of the assessment that you could not complete within the time, or would have extended / made
+more "production ready", please take note of them and we can run through them then.
+
+## Setup
 
 With Go 1.23 installed, the server can be run as such:
 
@@ -35,7 +44,7 @@ We can also run it in Docker as such:
 ✗ docker run --rm --name devops-interview -p 8081:8081 devops-interview
 ```
 
-## Coding
+## Coding
 
 ### Task 1
 
@@ -44,6 +53,7 @@ Update the code to return a HTTP Bad Request status code if the `cloudProvider` 
 ### Task 2
 
 Using a logging framework of your choice, update the logging throughout the code to use a structured log format, e.g. JSON.
+If there is a specific reason you have chosen the framework, please make note of that as a comment in the code.
 
 ### Task 3
 
@@ -58,7 +68,7 @@ bucket.
 [MinIO](https://min.io/product/s3-compatibility) is an S3-compatible storage solution that can be run locally. If you do run such a
 solution locally, please include documentation as to how you set it up.
 
-### Task 5
+### Task 5
 
 Update the code so that only one photo upload can be made concurrently to any one cloud provider.
 
@@ -146,10 +156,16 @@ In a larger project, the time spent in `go mod download` fetching dependencies c
 
 ### Task 3
 
-By default, Docker containers run using the root user. This is explicit in the image `USER root`. Update the image to use a non-root
-user for improved security.
+By default, Docker containers run using the root user. This is explicit in the image `USER root`. Update the image to use a non-root user for improved security.
 
 ### Task 4
+
+Now that we have our minimal image ready to publish, update the `.github/workflows/publish.yaml` workflow to build and publish the image within the confines of
+a Github Actions runner machine, upon merge of a pull request.
+
+*Note:* you don't have to actually publish the image.
+
+### Task 5 (Optional)
 
 Often, the dependencies that we reference in our Go code at Popsa are private, i.e. they are other Popsa Go projects. This project has a module directive as follows:
 
@@ -159,13 +175,6 @@ module github.com/popsa-platform/interview.devops
 
 As part of a code change, we have introduced a dependency on a private Go module, e.g. `module github.com/popsa-platform/other-project`. Update the Dockerfile `go mod download` directives
 to support downloading private Go modules.
-
-### Task 5
-
-Now that we have our minimal image ready to publish, update the `.github/workflows/publish.yaml` workflow to build and publish the image within the confines of
-a Github Actions runner machine, upon merge of a pull request.
-
-*Note:* you don't have to actually publish the image.
 
 ## Deploy
 
@@ -179,4 +188,4 @@ The Terraform code should consider the following:
 
 ### Task 2
 
-Speaking generally, outline some reasons why we might choose a serverless approach over a long-running service, for example within a Kubernetes service.
+Outline some reasons why we might choose a serverless approach over a long-running service, for example within a Kubernetes service.
