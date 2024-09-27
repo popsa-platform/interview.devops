@@ -43,15 +43,20 @@ Update the code to return a HTTP Bad Request status code if the `cloudProvider` 
 
 ### Task 2
 
-Update the code to only accept PNG images. If the request body is not a PNG image, return a HTTP Bad Request response.
+Using a logging framework of your choice, update the logging throughout the code to use a structured log format, e.g. JSON.
 
 ### Task 3
 
-Using a logging framework of your choice, update the logging throughout the code to use a structured log format, e.g. JSON.
+Update the code to only accept PNG images. If the request body is not a PNG image, return a HTTP Bad Request response.
 
 ### Task 4
 
-Add a request query parameter called `bucketName` and using either AWS/GCP/Azure SDK, write code to check if the storage bucket exists in the given provider.
+Add a request query parameter called `bucketName` and using either AWS/GCP/Azure SDK, write code to upload the photo to the storage
+bucket.
+
+*Note:* we do not expect you to actually upload the images to a cloud platform. Consider a local solution where possible, for example
+[MinIO](https://min.io/product/s3-compatibility) is an S3-compatible storage solution that can be run locally. If you do run such a
+solution locally, please include documentation as to how you set it up.
 
 ### Task 5
 
