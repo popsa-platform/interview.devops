@@ -146,6 +146,11 @@ In a larger project, the time spent in `go mod download` fetching dependencies c
 
 ### Task 3
 
+By default, Docker containers run using the root user. This is explicit in the image `USER root`. Update the image to use a non-root
+user for improved security.
+
+### Task 4
+
 Often, the dependencies that we reference in our Go code at Popsa are private, i.e. they are other Popsa Go projects. This project has a module directive as follows:
 
 ```zsh
@@ -155,7 +160,7 @@ module github.com/popsa-platform/interview.devops
 As part of a code change, we have introduced a dependency on a private Go module, e.g. `module github.com/popsa-platform/other-project`. Update the Dockerfile `go mod download` directives
 to support downloading private Go modules.
 
-### Task 4
+### Task 5
 
 Now that we have our minimal image ready to publish, update the `.github/workflows/publish.yaml` workflow to build and publish the image within the confines of
 a Github Actions runner machine, upon merge of a pull request.
